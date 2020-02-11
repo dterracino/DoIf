@@ -32,6 +32,6 @@ namespace DoIf
         public static IEnumerable<TSource> WhereIf<TSource>(this IEnumerable<TSource> source,
             string condition,
             Func<TSource, bool> predicate)
-            => source.DoIf(condition.IsNotEmpty(), s => s.Where(predicate));
+            => source.DoIf(!string.IsNullOrEmpty(condition), s => s.Where(predicate));
     }
 }
